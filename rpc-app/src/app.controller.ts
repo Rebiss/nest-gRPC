@@ -1,7 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
 import { AppService } from './app.service';
-import { MessagePattern } from '@nestjs/microservices';
-import { Logger } from '@nestjs/common';
+import { INumberArray, ISumOfNumberArray } from './interface/app.interface';
 
 @Controller()
 export class AppController {
@@ -13,9 +13,9 @@ export class AppController {
         return this.appService.getHello();
     }
 
-    @MessagePattern('add')
-    async accumulation(data: number[]) {
-        this.logger.log(`Adding ${data.toString()}`);
-        return this.appService.add(data);
+    @GrpcMethod('AppController', 'Accumulate')
+    accumulate(numberArray: INumberArray, metadata: any): ISumOfNumberArray {
+        this.logger.log(`Adding ${numberArray.toString()}`);
+        return { sum: this.appService.add(numberArray.data) };
     }
 }

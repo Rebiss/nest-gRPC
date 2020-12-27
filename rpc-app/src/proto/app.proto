@@ -2,8 +2,8 @@ syntax = "proto3"; // version
 
 package app; // package name -> app.configurations  package: 'app',
 
-service AppController {
-    rpc Accumulate(NumberArray) returns (SumOfNumberArray);
+service AppController { //app.controller => @GrpcMethod('AppController' (Service Name ProtoBufer), 'Accumulate')
+    rpc Accumulate(NumberArray) returns (SumOfNumberArray); //Accumulate => Methods name
 }
 
 message NumberArray {
