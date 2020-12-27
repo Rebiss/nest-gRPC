@@ -23,7 +23,11 @@ let AppController = class AppController {
     onModuleInit() {
         this.grpcService = this.client.getService('AppController');
     }
+    helloNest() {
+        return `Hello Nest Alll ooooo`;
+    }
     async accumulate(data) {
+        console.log('>>>>>', data);
         this.logger.log(`Adding ${data.toString()}`);
         return this.grpcService.accumulate({ data });
     }
@@ -32,6 +36,12 @@ __decorate([
     microservices_1.Client(gRPC_configuration_1.microserviceOptions),
     __metadata("design:type", Object)
 ], AppController.prototype, "client", void 0);
+__decorate([
+    common_1.Get(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "helloNest", null);
 __decorate([
     common_1.Post('add'),
     __param(0, common_1.Body('data')),

@@ -8,7 +8,7 @@ const logger = new common_1.Logger('Main');
 async function bootstrap() {
     const app = await core_1.NestFactory.createMicroservice(app_module_1.AppModule, app_configuration_1.microserviceOptions);
     app.listen(() => {
-        logger.log(`Microservice is running... port: 3022`);
+        logger.log(`Microservice is running... port`);
     });
 }
 bootstrap();

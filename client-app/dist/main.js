@@ -6,7 +6,7 @@ const common_1 = require("@nestjs/common");
 const logger = new common_1.Logger('Main');
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    await app.listen(3011);
+    await app.listen(3000);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

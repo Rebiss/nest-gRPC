@@ -1,4 +1,4 @@
-import { Controller, OnModuleInit, Post, Logger, Body } from '@nestjs/common';
+import { Controller, OnModuleInit, Post, Logger, Body, Get } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 // import { AppService } from './app.service';
 import { microserviceOptions } from './config/gRPC.configuration';
@@ -19,8 +19,14 @@ export class AppController implements OnModuleInit {
         this.grpcService = this.client.getService<IGrpcService>('AppController');
     }
 
+    @Get()
+    helloNest(): string {
+        return `Hello Nest Alll ooooo`;
+    }
+
     @Post('add')
     async accumulate(@Body('data') data: number[]) {
+        console.log('>>>>>', data);
         this.logger.log(`Adding ${data.toString()}`);
         return this.grpcService.accumulate({ data });
     }
