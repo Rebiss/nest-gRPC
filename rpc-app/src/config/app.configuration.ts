@@ -6,6 +6,6 @@ export const microserviceOptions = {
     options: {
         // host: 'localhost',
         package: 'app',
-        protoPath: join(__dirname, '../proto/app.proto'),
+        protoPath: join(__dirname, '../../src/proto/app.proto'),
     },
 };
